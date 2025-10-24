@@ -1,287 +1,86 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DDX Fitness — официальный сайт</title>
-  <meta name="description" content="DDX Fitness: современный тренажёрный зал, групповые программы, персональные тренировки. Цены, расписание и контакты." />
-
-  <!-- SEO & Social -->
-  <meta property="og:title" content="DDX Fitness" />
-  <meta property="og:description" content="Современный фитнес‑клуб: тренажёрный зал, групповые занятия, персональные тренировки." />
-  <meta property="og:type" content="website" />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DDX Fitness</title>
+  <link rel="icon" href="img/logo.png" />
   <style>
-    :root {
-      /* Палитра под логотип */
-      --bg: #073b3f;          /* тёмно‑бирюзовый фон */
-      --panel: #0b4a50;       /* тёмная панель */
-      --text: #ffffff;        /* белый */
-      --muted: #cfe6e8;       /* светлый текст */
-      --brand-orange: #ff7a1a;/* DDX оранжевый */
-      --brand-cyan: #46e0db;  /* DDX бирюзовый */
-      --brand-blue: #1f7cff;  /* дополнительный синий */
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    html, body { height: 100%; }
-    body {
-      margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: radial-gradient(1000px 500px at 10% -10%, rgba(70,224,219,.12), transparent 60%),
-                  radial-gradient(900px 600px at 110% 10%, rgba(255,122,26,.10), transparent 55%),
-                  var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: var(--brand-cyan); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .container { width: min(1180px, 92vw); margin: 0 auto; }
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(7,59,63,.7); backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 14px; }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing:.3px; font-size: 18px }
-    .logo { width: 34px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, var(--brand-orange), var(--brand-cyan)); box-shadow: inset 0 0 12px rgba(255,255,255,.25); }
-    .menu { display: flex; gap: 18px; flex-wrap: wrap; }
-    .menu a { color: var(--text); opacity:.95; font-size: 15px; }
-
-    .btn { display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); color: var(--text); box-shadow: var(--shadow); font-weight:600 }
-    .btn-primary { background: linear-gradient(180deg, var(--brand-orange), #ff6000); border: none; }
-
-    .hero { padding: 72px 0 44px; }
-    .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: center; }
-    .tag { display:inline-block; font-size:12px; letter-spacing:.4px; padding:6px 10px; border-radius:999px; background: rgba(70,224,219,.18); color: #e6fffb; border: 1px solid rgba(70,224,219,.35) }
-    h1 { font-size: clamp(30px, 4vw, 48px); line-height: 1.06; margin: 18px 0 10px; }
-    .sub { color: var(--muted); font-size: 16px; }
-    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 18px; }
-    .stat { background: var(--panel); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; padding: 14px; text-align:center }
-    .stat b { font-size: 22px; display:block; color: var(--brand-cyan); }
-
-    section { padding: 56px 0; }
-    .section-title { font-size: 26px; margin: 0 0 16px; }
-    .section-sub { color: var(--muted); margin: 0 0 24px; }
-
-    .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .grid-2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .card { background: var(--panel); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    .shot { aspect-ratio: 16/9; border-radius: 12px; overflow:hidden; border: 1px solid rgba(255,255,255,.12); }
-    .shot img { width: 100%; height: 100%; object-fit: cover; display:block }
-
-    .pricing { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
-    .price { display:flex; flex-direction:column; gap: 12px; }
-    .price .num { font-size: 32px; font-weight: 800; color: var(--brand-orange); }
-    .muted { color: var(--muted); }
-
-    .list { margin: 0; padding-left: 18px; }
-
-    /* Footer */
-    footer { padding: 32px 0; color: var(--muted); border-top: 1px solid rgba(255,255,255,.08); margin-top: 40px; }
-
-    @media (max-width: 980px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .grid-3, .pricing { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 640px) {
-      .menu { display:none; }
-      .grid-3, .pricing, .grid-2 { grid-template-columns: 1fr; }
-      .hero { padding-top: 44px; }
-    }
+    body { margin:0; font-family:Arial, sans-serif; background:#003d3d; color:white; }
+    header { background:url('img/hero.jpg') center/cover no-repeat; text-align:center; padding:100px 20px; }
+    header h1 { font-size:48px; color:#ff6600; margin:0; }
+    header p { font-size:20px; max-width:600px; margin:20px auto; color:#aef; }
+    section { padding:60px 20px; max-width:1200px; margin:auto; }
+    h2 { font-size:36px; color:white; }
+    .gallery { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+    .gallery img { width:30%; border-radius:10px; }
+    .price-cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+    .card { background:#005252; border-radius:12px; padding:20px; width:300px; }
+    .card h3 { color:#ff6600; }
+    footer { background:#002f2f; text-align:center; padding:20px; color:#aaa; }
   </style>
 </head>
 <body>
   <header>
-    <div class="container nav">
-      <div class="brand"><span class="logo"></span> DDX Fitness</div>
-      <nav class="menu">
-        <a href="#home">Главная</a>
-        <a href="#about">Информация</a>
-        <a href="#history">История</a>
-        <a href="#gym">Тренажёрный зал</a>
-        <a href="#groups">Групповые программы</a>
-        <a href="#prices">Услуги и цены</a>
-        <a href="#sources">Источники</a>
-        <a href="#contact">Контакты</a>
-      </nav>
-      <a class="btn btn-primary" href="#contact">Записаться</a>
-    </div>
+    <img src="img/logo.png" alt="DDX Logo" width="150" />
+    <h1>DDX Fitness — энергия движения и умные тренировки</h1>
+    <p>Премиальное оборудование, персональные программы, профессиональный подход.</p>
   </header>
 
-  <main id="home" class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="tag">Фитнес клуба нового поколения</span>
-        <h1>DDX Fitness — энергия движения и умные тренировки</h1>
-        <p class="sub">Премиальное оборудование, крутые групповые классы и персональный подход. Начните путь к лучшей форме уже сегодня.</p>
-        <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap">
-          <a class="btn btn-primary" href="#prices">Смотреть цены</a>
-          <a class="btn" href="#gym">Оборудование</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><b>2000 м²</b><span class="muted">пространство клуба</span></div>
-          <div class="stat"><b>100+</b><span class="muted">тренажёров</span></div>
-          <div class="stat"><b>7 дней</b><span class="muted">в неделю</span></div>
-        </div>
-      </div>
-      <div class="hero-card">
-        <img src="img/hero.jpg" alt="DDX Fitness зал" style="width:100%; border-radius:12px; aspect-ratio: 16/10; object-fit: cover;"/>
-        <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
-          <span class="tag">Premium зал</span>
-          <span class="tag">Групповые</span>
-          <span class="tag">Персональные</span>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">Общая информация</h2>
-      <p class="section-sub">DDX Fitness — сеть клубов с современными тренажёрами, функциональными зонами и ярким неон‑дизайном. Мы помогаем достигать целей: похудение, набор массы, здоровье спины, выносливость.</p>
-      <div class="grid-3">
-        <div class="card"><h3>Персональный подход</h3><p class="muted">Фитнес‑тест и индивидуальные программы под цели и график.</p></div>
-        <div class="card"><h3>Комьюнити</h3><p class="muted">Групповые классы, челленджи и открытые тренировки — тренируемся вместе.</p></div>
-        <div class="card"><h3>Сервис</h3><p class="muted">Раздевалки, полотенца, парковка и бар со спортивным питанием.</p></div>
-      </div>
+  <section>
+    <h2>История</h2>
+    <p>DDX — это эволюция классического фитнеса: технологичность, дизайн и эффективность. С 2015 года открываем клубы в крупнейших городах, чтобы сделать спорт доступным и вдохновляющим.</p>
+    <div class="gallery">
+      <img src="img/history-1.jpg" alt="Интерьер клуба" />
+      <img src="img/history-2.jpg" alt="Зона кардио" />
     </div>
   </section>
 
-  <section id="history">
-    <div class="container">
-      <h2 class="section-title">История</h2>
-      <p class="section-sub">DDX — это эволюция классического фитнеса: технологичность, дизайн и эффективность. С 2015 года открываем клубы в крупнейших городах, чтобы сделать спорт доступным и вдохновляющим.</p>
-      <div class="grid-2">
-        <figure class="shot"><img src="img/history-1.jpg" alt="Интерьер клуба"/></figure>
-        <figure class="shot"><img src="img/history-2.jpg" alt="Зона кардио"/></figure>
-      </div>
+  <section>
+    <h2>Тренажёрный зал</h2>
+    <p>Кардио-линия, зона свободных весов, функциональные клетки и оборудование премиум-класса.</p>
+    <div class="gallery">
+      <img src="img/gym-1.jpg" alt="Кардио" />
+      <img src="img/gym-2.jpg" alt="Зона тренажёров" />
+      <img src="img/gym-3.jpg" alt="Свободные веса" />
     </div>
   </section>
 
-  <section id="gym">
-    <div class="container">
-      <h2 class="section-title">Тренажёрный зал</h2>
-      <p class="section-sub">Кардио‑линия, зона свободных весов, функциональные клетки, кросс‑зона, смит‑машины и оборудование премиум‑класса.</p>
-      <div class="grid-3">
-        <figure class="shot"><img src="img/gym-1.jpg" alt="Кардио"/></figure>
-        <figure class="shot"><img src="img/gym-2.jpg" alt="Зона тренажёров"/></figure>
-        <figure class="shot"><img src="img/gym-3.jpg" alt="Свободные веса"/></figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="groups">
-    <div class="container">
-      <h2 class="section-title">Групповые программы</h2>
-      <p class="section-sub">Силовые, интервальные, dance, mobility и mind&body. Подходит для любого уровня.</p>
-      <div class="grid-3">
-        <div class="card"><h3>HIIT / MIKT</h3><p class="muted">Интенсивные интервалы для жиросжигания и выносливости.</p></div>
-        <div class="card"><h3>Силовые</h3><p class="muted">Тело, Core, Functional — укрепляем мышцы и связки.</p></div>
-        <div class="card"><h3>Mobility & Stretch</h3><p class="muted">Подвижность, гибкость и восстановление.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="prices">
-    <div class="container">
-      <h2 class="section-title">Услуги и цены</h2>
-      <p class="section-sub">Абонементы, персональные тренировки и доп. услуги. Цены примерные — финальные уточняйте в клубе.</p>
-      <div class="pricing">
-        <div class="card price">
-          <h3>Абонемент 1 мес</h3>
-          <div class="num">от 1 700 — 2 800 ₽</div>
-          <ul class="muted list">
-            <li>Безлимитный доступ в зал</li>
-            <li>Групповые тренировки</li>
-            <li>Фитнес‑тест</li>
-          </ul>
-          <a class="btn" href="#contact">Купить</a>
-        </div>
-        <div class="card price" style="outline:2px solid rgba(255,122,26,.4)">
-          <h3>Персональные тренировки</h3>
-          <div class="num">от 1 800 ₽</div>
-          <ul class="muted list">
-            <li>Индивидуальная программа</li>
-            <li>Контроль техники</li>
-            <li>Питание и восстановление</li>
-          </ul>
-          <a class="btn btn-primary" href="#contact">Записаться</a>
-        </div>
-        <div class="card price">
-          <h3>Доп. услуги</h3>
-          <div class="num">по запросу</div>
-          <ul class="muted list">
-            <li>Тест InBody</li>
-            <li>Массаж / сауна</li>
-            <li>Спорт‑бар</li>
-          </ul>
-          <a class="btn" href="#contact">Уточнить</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="sources">
-    <div class="container">
-      <h2 class="section-title">Источники</h2>
-      <p class="section-sub">Подборка материалов и страниц клубов.</p>
+  <section>
+    <h2>Услуги и цены</h2>
+    <div class="price-cards">
       <div class="card">
-        <ul class="list">
-          <li><a href="https://www.ddxfitness.ru/clubs/ddx-sankt-peterburg-galereya/" target="_blank" rel="noopener">Галерея DDX Санкт‑Петербург</a></li>
-          <li><a href="https://www.ddxfitness.ru/clubs/ddx-kazan-art/" target="_blank" rel="noopener">DDX Казань ART</a></li>
-          <li><a href="https://aledo-pro.ru/projects/view/192/" target="_blank" rel="noopener">ALĒDO PRO — проект освещения DDX</a></li>
-          <li><a href="https://zoon.ru/msk/fitness/network/ddx_fitness/" target="_blank" rel="noopener">Отзывы и карточки на Zoon</a></li>
+        <h3>Абонемент 1 мес</h3>
+        <p><strong>от 1 700 до 2 800 ₽</strong></p>
+        <ul>
+          <li>Безлимитный доступ в зал</li>
+          <li>Групповые тренировки</li>
+          <li>Фитнес-тест</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Персональные тренировки</h3>
+        <p><strong>от 1 800 ₽</strong></p>
+        <ul>
+          <li>Индивидуальная программа</li>
+          <li>Контроль техники</li>
+          <li>Питание и восстановление</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Доп. услуги</h3>
+        <p><strong>по запросу</strong></p>
+        <ul>
+          <li>Тест InBody</li>
+          <li>Массаж / сауна</li>
+          <li>Спорт-бар</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <div class="container">
-      <div class="card">
-        <h2 class="section-title" style="margin-top:0">Контакты</h2>
-        <p class="section-sub">Оставьте заявку — мы свяжемся и подберём программу.</p>
-        <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.'); this.reset();">
-          <div class="grid-2">
-            <label class="field">Имя<input name="name" placeholder="Дарья" required /></label>
-            <label class="field">Email<input type="email" name="email" placeholder="name@example.com" required /></label>
-          </div>
-          <div class="grid-2" style="margin-top:12px">
-            <label class="field">Интересует<select name="type"><option>Абонемент</option><option>Персональные</option><option>Групповые</option></select></label>
-            <label class="field">Клуб<select name="club"><option>Москва</option><option>Санкт‑Петербург</option><option>Казань</option></select></label>
-          </div>
-          <label class="field" style="display:block; margin-top:12px">Комментарий<textarea name="message" placeholder="Цели, удобное время, пожелания…" style="min-height:120px"></textarea></label>
-          <button class="btn btn-primary" type="submit" style="margin-top:12px">Отправить</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
   <footer>
-    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-      <span>© <span id="copy-year">2025</span> DDX Fitness</span>
-      <span class="muted">Политика конфиденциальности · Публичная оферта</span>
-    </div>
+    <p>© 2025 DDX Fitness. Все права защищены.</p>
   </footer>
-
-  <script>
-    // Обновляем год
-    const y = new Date().getFullYear();
-    document.getElementById('copy-year').textContent = y;
-
-    // Плавная прокрутка
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const href = a.getAttribute('href');
-        if (href.length > 1) {
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
 </body>
 </html>
